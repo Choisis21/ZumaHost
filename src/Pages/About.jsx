@@ -1,6 +1,6 @@
 import React from "react";
-import data from "../assets/Data.png";
-import about from "../assets/about5.png";
+import data from "../assets/stats.svg";
+import about from "../assets/launch.svg";
 import DataCenters from "../Components/DataCenters";
 import Testimonials from "../Components/Testimonials";
 
@@ -8,7 +8,7 @@ const AboutHeader = () => {
   return (
     <section className="bg-white">
       <div className="bg-[#eee5da] text-center pt-24 pb-16 px-6 lg:px-20 md:pt-32 md:pb-24">
-        <h1 className="text-3xl md:text-4xl font-bold font-[Georgia,_serif] text-[#7f7060] mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold font-[Georgia,_serif] text-[#a0430a] mb-4">
           About Us
         </h1>
         <p className="text-[#403c3c] font-['Roboto','sans-serif'] text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
@@ -19,7 +19,7 @@ const AboutHeader = () => {
       
       <div className="py-16 px-6 lg:px-20 flex flex-col md:flex-row items-center gap-10">
         <div className="w-full lg:w-1/2">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#7f7060] font-[Georgia,_serif]">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#a0430a] font-[Georgia,_serif]">
             Who We Are?
           </h2>
           <p className="text-[#403c3c] mb-4 leading-relaxed font-['Roboto','sans-serif']">
@@ -46,7 +46,7 @@ const AboutHeader = () => {
         </div>
 
         <div className="w-full lg:w-1/2">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#7f7060] font-[Georgia,_serif]">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#a0430a] font-[Georgia,_serif]">
             Why Choose Zuma Host?
           </h2>
           <p className="text-[#403c3c] mb-4 leading-relaxed font-['Roboto','sans-serif']">

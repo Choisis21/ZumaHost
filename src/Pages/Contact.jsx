@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import {
-  LifebuoyIcon,
-  ChatBubbleLeftRightIcon,
-  BookOpenIcon,
-} from "@heroicons/react/24/outline";
-import Contact from "../assets/Contact.png";
+import { LifebuoyIcon, ChatBubbleLeftRightIcon, BookOpenIcon,} from "@heroicons/react/24/outline";
+import Testimonials from "../Components/Testimonials"
+import Contact from "../assets/contact.svg";
 
 export default function ContactPage() {
   // --- Support Section State ---
@@ -56,7 +53,7 @@ export default function ContactPage() {
     <div className="w-full bg-white text-[#403c3c]">
       {/* ================= CONTACT HEADER ================= */}
       <section className="bg-[#eee5da] text-center py-16 px-6 lg:px-20 md:py-24">
-        <h1 className="text-3xl md:text-4xl font-bold font-[Georgia,_serif] text-[#7f7060] mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold font-[Georgia,_serif] text-[#a0430a] mb-4">
           Contact Us
         </h1>
         <p className="text-[#403c3c] font-['Roboto','sans-serif'] text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
@@ -81,7 +78,7 @@ export default function ContactPage() {
               <div className="mb-4">{option.icon}</div>
 
               {/* Title */}
-              <h3 className="text-lg font-semibold text-[#7f7060] mb-2 font-[Georgia,_serif]">
+              <h3 className="text-lg font-semibold text-[#a0430a] mb-2 font-[Georgia,_serif]">
                 {option.title}
               </h3>
 
@@ -103,9 +100,9 @@ export default function ContactPage() {
 
       {/* ================= CONTACT FORM ================= */}
       <section className="flex items-center justify-center px-4 py-10 bg-white">
-        <div className="flex flex-col md:flex-row w-full max-w-5xl border border-[#7f7060]/50 rounded-xl shadow-xl overflow-hidden bg-white">
+        <div className="flex flex-col my-25 md:flex-row w-full max-w-5xl border border-[#a0430a]/50 rounded-xl shadow-xl overflow-hidden bg-white">
           {/* --- LEFT SIDE: FORM --- */}
-          <div className="w-full md:w-1/2 border-b md:border-b-0 md:border-r border-[#7f7060]/40 p-8 md:p-10">
+          <div className="w-full md:w-1/2 border-b md:border-b-0 md:border-r border-[#a0430a]/40 p-8 md:p-10">
             {!submitted ? (
               <form
                 onSubmit={handleSubmit}
@@ -123,7 +120,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     placeholder="John Doe"
                     required
-                    className="bg-white border border-[#7f7060]/40 focus:border-[#a0430a] transition-colors p-3 rounded-md outline-none"
+                    className="bg-white border border-[#a0430a]/40 focus:border-[#a0430a] transition-colors p-3 rounded-md outline-none"
                   />
                 </div>
 
@@ -139,7 +136,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     placeholder="you@example.com"
                     required
-                    className="bg-white border border-[#7f7060]/40 focus:border-[#a0430a] transition-colors p-3 rounded-md outline-none"
+                    className="bg-white border border-[#a0430a]/40 focus:border-[#a0430a] transition-colors p-3 rounded-md outline-none"
                   />
                 </div>
 
@@ -153,7 +150,7 @@ export default function ContactPage() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="bg-white border border-[#7f7060]/40 focus:border-[#a0430a] transition-colors p-3 rounded-md outline-none"
+                    className="bg-white border border-[#a0430a]/40 focus:border-[#a0430a] transition-colors p-3 rounded-md outline-none"
                   >
                     <option value="">Select a reason...</option>
                     <option value="Inquiry">General Inquiry</option>
@@ -175,14 +172,14 @@ export default function ContactPage() {
                     rows={5}
                     placeholder="Tell us what's on your mind..."
                     required
-                    className="bg-white border border-[#7f7060]/40 focus:border-[#a0430a] transition-colors p-3 rounded-md outline-none resize-none"
+                    className="bg-white border border-[#a0430a]/40 focus:border-[#a0430a] transition-colors p-3 rounded-md outline-none resize-none"
                   ></textarea>
                 </div>
 
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="mt-4 py-3 bg-[#a0430a] hover:bg-[#7f7060] text-white font-semibold rounded-md transition-all shadow-md hover:shadow-lg"
+                  className="mt-4 py-3 bg-[#a0430a] hover:bg-[#a0430a] text-white font-semibold rounded-md transition-all shadow-md hover:shadow-lg"
                 >
                   Send Message
                 </button>
@@ -193,7 +190,7 @@ export default function ContactPage() {
                 <p className="text-lg font-medium">
                   Thanks, {formData.name || "there"}! Your message has been sent.
                 </p>
-                <p className="text-sm text-[#7f7060]">
+                <p className="text-sm text-[#a0430a]">
                   We’ll get back to you as soon as possible.
                 </p>
               </div>
@@ -202,17 +199,18 @@ export default function ContactPage() {
 
           {/* --- RIGHT SIDE: IMAGE --- */}
           <div className="relative w-full md:w-1/2 h-72 md:h-auto">
-            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+            <div className="absolute inset-0 bg-[#a0430a]/5 flex items-center justify-center">
               {/* Overlay text could go here if desired */}
             </div>
             <img
               src={Contact}
               alt="Contact us concept"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
         </div>
       </section>
+      <Testimonials />
     </div>
   );
 }

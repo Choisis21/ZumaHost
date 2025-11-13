@@ -7,6 +7,7 @@ import Migration from '../Components/Migration'
 import Testimonials from '../Components/Testimonials'
 import DataCenters from '../Components/DataCenters'
 import Faqs from '../Components/Faqs'
+import Security from "../Components/security"
 
 const Home = () => {
   return (
@@ -15,10 +16,11 @@ const Home = () => {
       <Domainchecker  />
       <PricingSection />
       <Advantage />
+      <Security />
       <Migration />
-      <Testimonials />
       <DataCenters />
       <Faqs />
+      <Testimonials />
     </div>
   )
 }

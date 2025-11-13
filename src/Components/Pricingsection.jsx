@@ -33,11 +33,7 @@ const PricingSection = () => {
       duration: { monthly: "/month", yearly: "/year" },
       description: "Ideal for those starting out and looking to upgrade later.",
       features: [
-        {
-          text: "Host 1 Website",
-          tooltip:
-            "You can host only 1 website on this plan. Upgrade to add more.",
-        },
+        { text: "Host 1 Website", tooltip: "You can host only 1 website on this plan. Upgrade to add more." },
         { text: "20GB SSD Storage", tooltip: "Fast SSD storage for better performance." },
         { text: "500GB Bandwidth", tooltip: "Monthly data transfer limit for your website." },
         { text: "Unlimited FTP Accounts", tooltip: "Create as many FTP accounts as needed." },
@@ -89,15 +85,13 @@ const PricingSection = () => {
       </p>
 
       {/* Billing Toggle Section */}
-      <div className="flex items-center justify-center gap-3 mb-12">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-3 sm:mb-12">
         {/* Toggle */}
         <div className="inline-flex bg-white rounded-full p-[3px] shadow-md">
           <button
             onClick={() => setBillingCycle("monthly")}
             className={`px-3 py-1.5 text-sm rounded-full font-medium transition-all ${
-              billingCycle === "monthly"
-                ? "bg-[#3b3533] text-white"
-                : "text-[#403c3c]"
+              billingCycle === "monthly" ? "bg-[#3b3533] text-white" : "text-[#403c3c]"
             }`}
           >
             Monthly
@@ -105,9 +99,7 @@ const PricingSection = () => {
           <button
             onClick={() => setBillingCycle("yearly")}
             className={`px-3 py-1.5 text-sm rounded-full font-medium transition-all ${
-              billingCycle === "yearly"
-                ? "bg-[#3b3533] text-white"
-                : "text-[#403c3c]"
+              billingCycle === "yearly" ? "bg-[#3b3533] text-white" : "text-[#403c3c]"
             }`}
           >
             Yearly
@@ -115,7 +107,7 @@ const PricingSection = () => {
         </div>
 
         {/* Yearly Offer Label */}
-        <span className="text-[#a0430a] text-sm font-semibold font-['Roboto','sans-serif']">
+        <span className="text-[#a0430a] text-sm font-semibold font-['Roboto','sans-serif'] mt-2 sm:mt-0 sm:ml-3">
           Save up to 15% Yearly
         </span>
       </div>
@@ -136,16 +128,12 @@ const PricingSection = () => {
               </div>
             )}
 
-            <h3 className="text-lg font-bold text-[#a0430a] uppercase mb-2">
-              {plan.name}
-            </h3>
+            <h3 className="text-lg font-bold text-[#a0430a] uppercase mb-2">{plan.name}</h3>
             <p className="text-[#7f7060] mb-3 text-sm">{plan.description}</p>
 
             <div className="text-4xl font-bold text-[#a0430a]">
               {plan.price[billingCycle]}
-              <span className="text-lg font-medium text-[#403c3c]">
-                {plan.duration[billingCycle]}
-              </span>
+              <span className="text-lg font-medium text-[#403c3c]">{plan.duration[billingCycle]}</span>
             </div>
 
             <hr className="my-4 border-gray-200" />
@@ -154,10 +142,7 @@ const PricingSection = () => {
               {plan.features.map((feature, idx) => {
                 const tooltipId = `${i}-${idx}`;
                 return (
-                  <li
-                    key={idx}
-                    className="flex items-center justify-between relative"
-                  >
+                  <li key={idx} className="flex items-center justify-between relative">
                     <span className="font-medium">{feature.text}</span>
 
                     <div
@@ -168,39 +153,31 @@ const PricingSection = () => {
                       onMouseLeave={() => {
                         if (!isMobile)
                           setTimeout(() => {
-                            setActiveTooltip((prev) =>
-                              prev === tooltipId ? null : prev
-                            );
+                            setActiveTooltip((prev) => (prev === tooltipId ? null : prev));
                           }, 150);
                       }}
                     >
                       <FaInfoCircle
                         className={`cursor-pointer transition-colors duration-200 ${
-                          activeTooltip === tooltipId
-                            ? "text-[#a0430a]"
-                            : "text-gray-500 hover:text-[#a0430a]"
+                          activeTooltip === tooltipId ? "text-[#a0430a]" : "text-gray-500 hover:text-[#a0430a]"
                         }`}
                         onClick={(e) => {
                           e.stopPropagation();
                           if (isMobile)
-                            setActiveTooltip(
-                              activeTooltip === tooltipId ? null : tooltipId
-                            );
+                            setActiveTooltip(activeTooltip === tooltipId ? null : tooltipId);
                         }}
                       />
 
                       {/* Tooltip */}
                       <div
-                        className={`absolute bottom-[125%] left-1/2 -translate-x-1/2 bg-[#403c3c] text-[#eee5da] text-xs rounded-md px-3 py-2 shadow-lg z-10 w-48 text-center transition-all duration-200
-                          ${
-                            activeTooltip === tooltipId
-                              ? "opacity-100 scale-100 pointer-events-auto"
-                              : "opacity-0 scale-95 pointer-events-none"
-                          } 
+                        className={`absolute bottom-[125%] sm:left-1/2 sm:-translate-x-1/2 left-auto right-0 bg-[#403c3c] text-[#eee5da] text-xs rounded-md px-3 py-2 shadow-lg z-10 w-48 max-w-[85vw] text-center transition-all duration-200
+                          ${activeTooltip === tooltipId ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"}
                         `}
                       >
                         {feature.tooltip}
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-8 border-transparent border-t-[#403c3c]" />
+
+                        {/* Arrow */}
+                        <div className="absolute w-3 h-3 bg-[#403c3c] rotate-45 bottom-[-6px] right-4 sm:left-1/2 sm:-translate-x-1/2"></div>
                       </div>
                     </div>
                   </li>

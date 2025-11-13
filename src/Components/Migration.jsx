@@ -1,7 +1,7 @@
 // File: Migration.jsx
 import React from "react";
-import migrationImg from "../assets/vectorelementss.png"; 
-import ssl2025 from "../assets/ssl2025.png";
+import migrationImg from "../assets/datatf.svg"; 
+import ssl2025 from "../assets/ssl.svg";
 
 const Migration = () => {
   return (
@@ -19,7 +19,7 @@ const Migration = () => {
 
         {/* Text Side */}
         <div className="w-full lg:w-1/2 text-center lg:text-left">
-          <h2 className="text-3xl font-[Georgia,_serif] md:text-4xl font-bold text-[#a0430a] mb-4 leading-snug">
+          <h2 className="text-3xl font-[Georgia,_serif] md:text-[22px] font-bold text-[#a0430a] mb-4 leading-snug">
             Unlimited Free Migrations & Free SSL Certificates
           </h2>
           <p className="text-[#403c3c] font-['Roboto','sans-serif'] mb-4">
@@ -45,7 +45,7 @@ const Migration = () => {
       <div className="flex flex-col-reverse lg:flex-row items-center gap-12">
         {/* Text Side */}
         <div className="w-full lg:w-1/2 text-center lg:text-left">
-          <h2 className="text-3xl font-[Georgia,_serif] md:text-4xl font-bold text-[#a0430a] mb-4 leading-snug">
+          <h2 className="text-3xl font-[Georgia,_serif] md:text-[22px] font-bold text-[#a0430a] mb-4 leading-snug">
             Unlimited Free Migrations & Free SSL Certificates
           </h2>
           <p className="text-[#403c3c] font-['Roboto','sans-serif'] mb-4">

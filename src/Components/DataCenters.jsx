@@ -45,7 +45,7 @@ export default function DataCenters() {
           ref={containerRef}
           src={worldMap}
           alt="World Map"
-          className="w-full h-auto object-contain"
+          className="w-full h-auto opacity-[0.5] object-contain"
         />
 
         {/* --- Pins Overlay --- */}

@@ -1,10 +1,14 @@
 import React from "react";
 import { FaBullhorn } from "react-icons/fa";
-import handdrawn from "../assets/hand-drawn.png";
+import handdrawn from "../assets/hero2.svg";
 
 const Hero = () => {
   return (
-    <section className="w-full min-h-screen flex flex-col md:flex-row items-center justify-between pt-[90px] bg-[#eee5da] text-[#262424] font-[Georgia,_serif]">
+    <section
+      className="w-full flex flex-col md:flex-row items-center justify-between
+        bg-[#eee5da] text-[#262424] font-[Georgia,_serif] 
+        pt-[90px] sm:pt-[80px] md:pt-35 pb-10 md:pb-15 lg:pt-[90px] lg:pb-0"
+    >
       {/* ---------- Inline CSS for pulse animation ---------- */}
       <style>{`
         @keyframes pulse-square {
@@ -14,7 +18,7 @@ const Hero = () => {
       `}</style>
 
       {/* ---------- LEFT SIDE CONTENT ---------- */}
-      <div className="flex-1 text-center md:text-left mt-6 md:mt-0 px-5 md:px-10 lg:px-[5%] max-w-full">
+      <div className="flex-1 text-center md:text-left mt-6 md:mt-0 px-5 md:px-10 md:py-5 lg:px-[5%] max-w-full">
         {/* Promo Badge */}
         <div className="flex items-center justify-center md:justify-start gap-3 bg-white/40 px-5 py-2.5 rounded-full text-[14px] sm:text-[15px] mb-6 sm:mb-8 w-fit shadow-sm backdrop-blur-[2px] mx-auto md:mx-0">
           <div className="relative w-10 h-10 flex items-center justify-center bg-[#403c3c] rounded-md text-[#e5e5e5] text-[18px] overflow-visible">
@@ -33,18 +37,18 @@ const Hero = () => {
             <FaBullhorn />
           </div>
 
-          <span className="text-[10px] font-['Roboto','sans-serif'] text-[#403c3c] sm:text-base leading-tight">
+          <span className="text-[10px] md:text-[15px] font-['Roboto','sans-serif'] text-[#403c3c] sm:text-base leading-tight">
             <strong>ENJOY UP TO 15%</strong> IN AFFILIATE COMMISSIONS
           </span>
         </div>
 
         {/* Heading */}
-        <h1 className="text-[15px] font-[Georgia,_serif] sm:text-[2.3rem] md:text-[2.6rem] lg:text-[40px] leading-snug sm:leading-[1.3] mb-4 sm:mb-6 font-bold text-[#a0430a]">
+        <h1 className="text-[15px] font-[Georgia,_serif] sm:text-[2.3rem] md:text-[22px] lg:text-[40px] leading-snug sm:leading-[1.3] mb-4 sm:mb-6 font-bold text-[#a0430a]">
           Reliable Web Hosting <br className="hidden sm:block" /> & Domain Names Provider
         </h1>
 
         {/* Description */}
-        <p className="text-[15px] font-['Roboto','sans-serif'] sm:text-[1rem] md:text-[1.1rem] leading-[1.6] text-[#7f7060] mb-8 sm:mb-9 px-0">
+        <p className="text-[15px] font-['Roboto','sans-serif'] sm:text-[1rem] md:text-[15px] leading-[1.6] text-[#7f7060] mb-8 sm:mb-9 px-0">
           We add wings to your website, featuring Website Builders, Free SSL
           Certificates, Softaculous, LiteSpeed Cache for WordPress, and much more.
         </p>
@@ -52,8 +56,8 @@ const Hero = () => {
         {/* CTA Button */}
         <a
           href="#"
-         className="inline-block border border-[#403c3c] bg-[#403c3c] text-white hover:bg-transparent hover:text-[#403c3c] font-medium text-[0.9rem] sm:text-[1rem] px-6 sm:px-8 py-3 sm:py-3.5 rounded-full transition-all duration-200">
-
+          className="inline-block border border-[#403c3c] bg-[#403c3c] text-white hover:bg-transparent hover:text-[#403c3c] font-medium text-[0.9rem] sm:text-[1rem] px-6 sm:px-8 py-3 sm:py-3.5 rounded-full transition-all duration-200"
+        >
           Check Features
         </a>
       </div>
@@ -66,7 +70,6 @@ const Hero = () => {
           className="w-full h-auto max-w-none block mx-auto md:max-w-[90%] lg:max-w-full"
         />
       </div>
-
     </section>
   );
 };

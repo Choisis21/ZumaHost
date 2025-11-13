@@ -63,7 +63,7 @@ export default function Navbar() {
       }`}
     >
       {/* Navbar Container */}
-      <div className="w-full flex justify-between items-center mt-2 p-4 rounded-lg">
+      <div className="w-full flex justify-between md:px-5 items-center mt-2 p-4 rounded-lg">
         {/* Logo */}
         <div className="flex items-center space-x-2 pl-4 sm:pl-6 md:pl-10">
           <img
@@ -78,20 +78,20 @@ export default function Navbar() {
 
         {/* Desktop Navbar */}
         <nav className="hidden lg:flex items-center pr-10 space-x-8">
-          <Link to="/" className="text-[#3b3533] hover:text-[#7f7060]">
+          <Link to="/" className="text-[#3b3533] hover:text-[#a0430a]">
             Home
           </Link>
-          <Link to="/about" className="text-[#3b3533] hover:text-[#7f7060]">
+          <Link to="/about" className="text-[#3b3533] hover:text-[#a0430a]">
             About
           </Link>
 
-          <Link to="/hosting" className="text-[#3b3533] hover:text-[#7f7060]">
+          <Link to="/hosting" className="text-[#3b3533] hover:text-[#a0430a]">
             Hosting
           </Link>
 
           {/* Hosting Dropdown 
           <div className="relative group">
-            <button className="text-[#3b3533] hover:text-[#7f7060] flex items-center gap-1 px-2 py-1">
+            <button className="text-[#3b3533] hover:text-[#a0430a] flex items-center gap-1 px-2 py-1">
               Hosting ▾
             </button> */}
 
@@ -112,7 +112,7 @@ export default function Navbar() {
                 >
                   <plan.icon className="w-8 h-8 text-[#a0430a] mt-1" />
                   <div>
-                    <p className="font-medium hover:text-[#7f7060]">{plan.title}</p>
+                    <p className="font-medium hover:text-[#a0430a]">{plan.title}</p>
                     <p className="text-sm font-['Roboto','sans-serif'] text-[#8a8383]">{plan.desc}</p>
                   </div>
                 </a>
@@ -122,7 +122,7 @@ export default function Navbar() {
 
           {/* Domain Dropdown */}
           <div className="relative group">
-            <button className="text-[#3b3533] hover:text-[#7f7060] flex items-center gap-1 px-2 py-1">
+            <button className="text-[#3b3533] hover:text-[#a0430a] flex items-center gap-1 px-2 py-1">
               Domain ▾
             </button>
 
@@ -145,7 +145,7 @@ export default function Navbar() {
                 >
                   <service.icon className="w-5 h-5 text-[#a0430a] mt-1" />
                   <div>
-                    <p className="font-medium hover:text-[#7f7060]">{service.title}</p>
+                    <p className="font-medium hover:text-[#a0430a]">{service.title}</p>
                     <p className="text-sm font-['Roboto','sans-serif'] text-[#8a8383]">{service.desc}</p>
                   </div>
                 </a>
@@ -153,10 +153,10 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Link to="/contact" className="text-[#3b3533] hover:text-[#7f7060]">
+          <Link to="/contact" className="text-[#3b3533] hover:text-[#a0430a]">
             Contact
           </Link>
-          <Link to="#" className="text-[#3b3533] hover:text-[#7f7060]">
+          <Link to="#" className="text-[#3b3533] hover:text-[#a0430a]">
             Affiliates
           </Link>
 
@@ -173,7 +173,7 @@ export default function Navbar() {
         <div className="lg:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-[#3b3533] hover:text-[#7f7060]"
+            className="text-[#3b3533] hover:text-[#a0430a]"
           >
             {isOpen ? (
               <XMarkIcon className="w-6 h-6" />
@@ -212,7 +212,7 @@ export default function Navbar() {
           <div>
             <button
               onClick={() => setHostingOpen(!hostingOpen)}
-              className="w-full text-left flex justify-between items-center text-[#3b3533] hover:text-[#7f7060] px-2 py-2 rounded-md"
+              className="w-full text-left flex justify-between items-center text-[#3b3533] hover:text-[#a0430a] px-2 py-2 rounded-md"
             >
               Hosting ▾
             </button>
@@ -244,7 +244,7 @@ export default function Navbar() {
           <div>
             <button
               onClick={() => setDomainOpen(!domainOpen)}
-              className="w-full text-left flex justify-between items-center text-[#3b3533] hover:text-[#7f7060] px-2 py-2 rounded-md"
+              className="w-full text-left flex justify-between items-center text-[#3b3533] hover:text-[#a0430a] px-2 py-2 rounded-md"
             >
               Domain ▾
             </button>

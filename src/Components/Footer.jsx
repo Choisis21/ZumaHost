@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn,} from "react-icons/fa";
 
 export default function Footer() {
@@ -43,10 +44,11 @@ export default function Footer() {
         <div>
           <h3 className="text-[#a0430a] font-[Georgia,_serif] font-semibold mb-3">Product</h3>
           <ul className="space-y-2 font-['Roboto','sans-serif'] text-[#403c3c] text-sm">
-            <li><a href="#" className="hover:text-[#7f7060]">Features</a></li>
-            <li><a href="#" className="hover:text-[#7f7060]">Pricing</a></li>
-            <li><a href="#" className="hover:text-[#7f7060]">Security</a></li>
-            <li><a href="#" className="hover:text-[#7f7060]">Roadmap</a></li>
+            <li><Link to="/hosting" className="hover:text-[#7f7060]">Hosting</Link></li>
+            <li><Link to="/domain" className="hover:text-[#7f7060]">Domain Registration</Link></li>
+            <li><Link to="/domain" className="hover:text-[#7f7060]">Domain Transfer</Link></li>
+            <li><Link to="/dns" className="hover:text-[#7f7060]">DNS Management</Link></li>
+            <li><Link to="/web" className="hover:text-[#7f7060]">Web development</Link></li>
           </ul>
         </div>
 
@@ -54,10 +56,10 @@ export default function Footer() {
         <div>
           <h3 className="text-[#a0430a] font-[Georgia,_serif] font-semibold mb-3">Company</h3>
           <ul className="space-y-2 font-['Roboto','sans-serif'] text-[#403c3c] text-sm">
-            <li><a href="#" className="hover:text-[#7f7060]">About Us</a></li>
-            <li><a href="#" className="hover:text-[#7f7060]">Careers</a></li>
-            <li><a href="#" className="hover:text-[#7f7060]">Blog</a></li>
-            <li><a href="#" className="hover:text-[#7f7060]">Press</a></li>
+            <li><Link to="/about" className="hover:text-[#7f7060]">About Us</Link></li>
+            <li><Link to="/careers" className="hover:text-[#7f7060]">Careers</Link></li>
+            <li><Link to="/affiliate" className="hover:text-[#7f7060]">Affiliates</Link></li>
+            <li><Link to="/press" className="hover:text-[#7f7060]">Press</Link></li>
           </ul>
         </div>
 
@@ -65,10 +67,10 @@ export default function Footer() {
         <div>
           <h3 className="text-[#a0430a] font-[Georgia,_serif] font-semibold mb-3">Resources</h3>
           <ul className="space-y-2 font-['Roboto','sans-serif'] text-[#403c3c] text-sm">
-            <li><a href="#" className="hover:text-[#7f7060]">Documentation</a></li>
-            <li><a href="#" className="hover:text-[#7f7060]">Support</a></li>
-            <li><a href="#" className="hover:text-[#7f7060]">API</a></li>
-            <li><a href="#" className="hover:text-[#7f7060]">Community</a></li>
+            <li><Link to="/documentation" className="hover:text-[#7f7060]">Documentation</Link></li>
+            <li><Link to="/contact" className="hover:text-[#7f7060]">Support</Link></li>
+            <li><Link to="/about" className="hover:text-[#7f7060]">API</Link></li>
+            <li><Link to="/about" className="hover:text-[#7f7060]">Community</Link></li>
           </ul>
         </div>
       </div>
@@ -76,9 +78,9 @@ export default function Footer() {
       {/* Mobile-only Legal Links */}
       <div className="md:hidden border-t font-[Georgia,_serif] border-gray-300 pt-6 mt-6 text-center text-sm text-gray-500">
         <div className="flex justify-center space-x-6">
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#">Cookies</a>
+          <Link to="/privacy">Privacy</Link>
+          <Link to="/terms">Terms</Link>
+          <Link to="/cookies">Cookies</Link>
         </div>
       </div>
 
@@ -133,9 +135,9 @@ export default function Footer() {
       <div className="border-t border-gray-300 font-[Georgia,_serif] pt-6 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500 max-w-7xl mx-auto">
         <p>© 2025 Zuma Host. All rights reserved.</p>
         <div className="hidden md:flex space-x-6">
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#">Cookies</a>
+          <Link to="/about">Privacy</Link>
+          <Link to="/about">Terms</Link>
+          <Link to="/about">Cookies</Link>
         </div>
       </div>
 
