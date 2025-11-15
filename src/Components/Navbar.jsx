@@ -32,6 +32,7 @@ export default function Navbar() {
       icon: GlobeAltIcon,
       title: "Domain Registration",
       desc: "Secure your perfect domain name today.",
+      path: "/domain-registration",
     },
     {
       icon: ArrowPathIcon,
@@ -138,9 +139,9 @@ export default function Navbar() {
               transition-all duration-200 ease-out z-50"
             >
               {domainServices.map((service, idx) => (
-                <a
+                <Link
                   key={idx}
-                  href="#"
+                  to={service.path}
                   className="flex items-start gap-3 px-4 py-2 text-[#3b3533] rounded-md transition-colors"
                 >
                   <service.icon className="w-5 h-5 text-[#a0430a] mt-1" />
@@ -148,7 +149,7 @@ export default function Navbar() {
                     <p className="font-medium hover:text-[#a0430a]">{service.title}</p>
                     <p className="text-sm font-['Roboto','sans-serif'] text-[#8a8383]">{service.desc}</p>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -256,9 +257,9 @@ export default function Navbar() {
                 className="mt-2 space-y-2 rounded-lg shadow-inner p-2"
               >
                 {domainServices.map((service, idx) => (
-                  <a
+                  <Link
                     key={idx}
-                    href="#"
+                    to={service.path}
                     className="flex items-start gap-3 px-2 py-2 text-[#fff] hover:opacity-90 rounded-md transition-colors"
                   >
                     <service.icon className="w-5 h-5 text-[#eee5da] mt-1" />
@@ -266,7 +267,7 @@ export default function Navbar() {
                       <p className="font-medium">{service.title}</p>
                       <p className="text-sm font-['Roboto','sans-serif'] text-[#fdfcfc80]">{service.desc}</p>
                     </div>
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}

@@ -11,7 +11,7 @@ const AboutHeader = () => {
         <h1 className="text-3xl md:text-4xl font-bold font-[Georgia,_serif] text-[#a0430a] mb-4">
           About Us
         </h1>
-        <p className="text-[#403c3c] font-['Roboto','sans-serif'] text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
+        <p className="text-[#7f7060] font-['Roboto','sans-serif'] text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
           We are the first step towards putting your business online and building a strong web presence.
           <br />Get to know us more.
         </p>
@@ -50,10 +50,15 @@ const AboutHeader = () => {
             Why Choose Zuma Host?
           </h2>
           <p className="text-[#403c3c] mb-4 leading-relaxed font-['Roboto','sans-serif']">
-            Zuma Host provides top-notch web hosting solutions with excellent reliability and affordability.
+            Zuma Host combines industry expertise with a modern approach to hosting, development, and server management. 
+            Our skilled team delivers the reliability and technical knowledge businesses depend on.
+          </p>
+          <p className="text-[#403c3c] mb-4 leading-relaxed font-['Roboto','sans-serif']">
+            Integrity matters to us. That’s why we only promote services we can fully support, no misleading claims or hidden details. 
+            You’ll always have full clarity about your hosting plan and the value you receive.
           </p>
           <p className="text-[#403c3c] leading-relaxed font-['Roboto','sans-serif']">
-            What started as a small personal project has flourished into one of the trusted web hosting companies globally.
+            And you’re never alone. Our customer support team is available 24/7, always ready to help you with hosting issues or general questions.
           </p>
         </div>
       </div>

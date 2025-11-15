@@ -8,6 +8,7 @@ import Contact from "./Pages/Contact";
 import Domain from "./Pages/Domain";
 import About from "./Pages/About";
 import Hosting from "./Pages/Hosting"
+import DomainRegistration from './Pages/DomainRegistration';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/domain" element={<Domain />} />
           <Route path="/about" element={<About />} />
           <Route path="/hosting" element={<Hosting />} />
+          <Route path="/domain-registration" element={<DomainRegistration />} />
           </Routes>
         <Footer />
       </div>

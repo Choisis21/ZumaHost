@@ -45,7 +45,7 @@ export default function Footer() {
           <h3 className="text-[#a0430a] font-[Georgia,_serif] font-semibold mb-3">Product</h3>
           <ul className="space-y-2 font-['Roboto','sans-serif'] text-[#403c3c] text-sm">
             <li><Link to="/hosting" className="hover:text-[#7f7060]">Hosting</Link></li>
-            <li><Link to="/domain" className="hover:text-[#7f7060]">Domain Registration</Link></li>
+            <li><Link to="/domain-registration" className="hover:text-[#7f7060]">Domain Registration</Link></li>
             <li><Link to="/domain" className="hover:text-[#7f7060]">Domain Transfer</Link></li>
             <li><Link to="/dns" className="hover:text-[#7f7060]">DNS Management</Link></li>
             <li><Link to="/web" className="hover:text-[#7f7060]">Web development</Link></li>

@@ -4,7 +4,8 @@ import PricingSection from "../Components/Pricingsection";
 import Advantage from "../Components/Advantage";
 import Security from "../Components/security";
 import Testimonials from "../Components/Testimonials"
-import about from "../assets/launch.svg";
+import about from "../assets/domain1.svg";
+import { Link } from "react-router-dom";
 
 const HostingSection = () => {
   const plans = [
@@ -76,7 +77,7 @@ const HostingSection = () => {
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className="relative flex flex-col items-center mb-5 rounded-[5px] shadow-lg bg-white hover:scale-105 transition-transform duration-300 w-full max-w-xs"
+                className="relative flex flex-col items-center mb-5 rounded-[10px] shadow-lg bg-white hover:scale-105 transition-transform duration-300 w-full max-w-xs"
               >
                 {/* Card Header */}
                 <div className="bg-[#7f7060] text-white w-full py-3 text-center font-semibold uppercase tracking-wide text-sm md:text-base rounded-t-[10px]">
@@ -114,14 +115,22 @@ const HostingSection = () => {
       
               <div className="w-full lg:w-1/2">
                 <h2 className="text-2xl md:text-3xl font-bold mb-4 text-[#a0430a] font-[Georgia,_serif]">
-                  Why Choose Zuma Host?
+                  Choose Your Domain with Ease
                 </h2>
                 <p className="text-[#403c3c] mb-4 leading-relaxed font-['Roboto','sans-serif']">
-                  Zuma Host provides top-notch web hosting solutions with excellent reliability and affordability.
+                  Your domain name is the foundation of your online identity, and finding the right one shouldn’t be complicated. 
+                  That’s why Zuma Host offers an easy, intuitive search experience.
                 </p>
-                <p className="text-[#403c3c] leading-relaxed font-['Roboto','sans-serif']">
-                  What started as a small personal project has flourished into one of the trusted web hosting companies globally.
+                <p className="text-[#403c3c] mb-4 leading-relaxed font-['Roboto','sans-serif']">
+                  With hundreds of domain options available, you can find the one that perfectly represents your brand, project, or business vision.
                 </p>
+                <p className="text-[#403c3c] mb-4 leading-relaxed font-['Roboto','sans-serif']">
+                  Take the next step to secure the domain that brings your idea to life.
+                </p>
+                <Link to="/domain-registration" className="px-5 py-2 bg-[#ece4d9] text-[#403c3c] rounded-md transition-colors hover:bg-[#a0430a] hover:text-white font-['Roboto','sans-serif']">
+                   Get Started
+                </Link>
+
               </div>
             </div>
       <Security />

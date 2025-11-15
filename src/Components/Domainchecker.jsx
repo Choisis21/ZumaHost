@@ -16,7 +16,7 @@ const Domainchecker = () => {
             type="text"
             placeholder="Start your online journey..."
             className="border border-gray-300 rounded-md py-3 px-4 w-full sm:w-2/3 
-                       focus:outline-none focus:ring-2 focus:ring-teal-400 
+                       focus:outline-none focus:ring-2 focus:ring-[#a0430a] 
                        placeholder-gray-500 text-gray-900"
           />
           <button className="bg-gradient-to-r from-[#c9ad8b] to-[#a0430a] text-white font-[Georgia,_serif] py-3 px-6 rounded-md w-full sm:w-auto transition">
