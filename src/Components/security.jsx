@@ -1,20 +1,59 @@
-import React from 'react'
+import React, { useEffect, useRef } from "react";
+import { H1, H3 } from "../Components/Headings";
 
 const Security = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-up-active");
+            observer.unobserve(entry.target); // animate only once
+          }
+        });
+      },
+      { threshold: 0.2 } // triggers when 20% is visible
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
+
   return (
-    <div className="bg-[#f9f6f2] py-16 px-6 md:px-12 lg:px-24">
+    <div
+      ref={sectionRef}
+      className="bg-[#f9f6f2] py-16 px-6 md:px-12 lg:px-24 fade-up"
+      style={{ transition: "all 0.8s ease-out" }}
+    >
+      <style>{`
+        .fade-up {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        .fade-up-active {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      `}</style>
+
       {/* ========================== WEBSITE FIREWALL SECTION ========================== */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:justify-between gap-10">
         {/* --- Text Content --- */}
         <div className="flex-1 text-center md:text-left">
-          <h2 className="text-3xl md:text-2xl font-extrabold mb-4 text-[#a0430a] font-[Georgia,_serif]">
-            Website Application Firewall (WAF)
-          </h2>
-          <p className="text-lg md:text-[15px] text-[#403c3c] font-['Roboto','sans-serif'] leading-relaxed">
+          <H1>Website Application Firewall (WAF) </H1>
+
+          <H3>
             Protecting your website from attacks & hacks is our utmost
             priority. Our Website Application Firewall (WAF) prevents all kinds
             of attacks and protects your web application from exploits.
-          </p>
+          </H3>
         </div>
 
         {/* --- Icon Section --- */}
@@ -32,7 +71,7 @@ const Security = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Security
+export default Security;

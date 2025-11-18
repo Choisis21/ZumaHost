@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline"; // Heroicons
+import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline"; 
+import {H1, H3} from "../Components/Headings";
 
 // ====== FAQ DATA ======
 const faqs = [
@@ -38,9 +39,9 @@ const Faqs = () => {
     <section className="bg-white py-16 px-6 sm:px-10 lg:px-20">
       <div className="max-w-4xl mx-auto">
         {/* ===== Section Title ===== */}
-        <h2 className="text-center text-2xl sm:text-3xl font-bold font-[Georgia,_serif] text-[#a0430a] mb-10">
+        <H1 className="text-center mb-10 lg:mb-20 transition-opacity duration-700 animate-fade-in">
           Frequently Asked Questions
-        </h2>
+        </H1>
 
         {/* ===== FAQ Items ===== */}
         <div className="space-y-4">
@@ -58,12 +59,16 @@ const Faqs = () => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full flex justify-between items-center text-left p-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 rounded-md"
               >
-                <h3 className="font-semibold text-base sm:text-lg font-[Georgia,_serif] text-[#a0430a]">
+                <h3 className="font-semibold text-base sm:text-lg font-[Georgia,_serif] text-[#a0430a] transition-colors duration-300 hover:text-[#c97d52]">
                   {faq.question}
                 </h3>
 
                 {/* ===== Toggle Icon ===== */}
-                <span className="text-[#a0430a] flex-shrink-0">
+                <span
+                  className={`text-[#a0430a] flex-shrink-0 transition-transform duration-300 ${
+                    openIndex === index ? "rotate-45" : "rotate-0"
+                  }`}
+                >
                   {openIndex === index ? (
                     <XMarkIcon className="h-5 w-5" />
                   ) : (
@@ -72,15 +77,15 @@ const Faqs = () => {
                 </span>
               </button>
 
-              {/* ===== Answer Section (with smooth expand) ===== */}
+              {/* ===== Answer Section (smooth expand + fade) ===== */}
               <div
-                className={`transition-all duration-300 overflow-hidden ${
-                  openIndex === index ? "max-h-96" : "max-h-0"
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                  openIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                 }`}
               >
-                <p className="px-5 pb-5 font-['Roboto','sans-serif'] text-[#403c3c] text-sm sm:text-base leading-relaxed">
+                <H3 className="px-5 pb-5 text-[#403c3c] transition-opacity duration-500">
                   {faq.answer}
-                </p>
+                </H3>
               </div>
             </div>
           ))}

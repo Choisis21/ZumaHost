@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaInfoCircle } from "react-icons/fa";
+import { H1, H2, H3 } from "../Components/Headings";
 
 const PricingSection = () => {
   const [billingCycle, setBillingCycle] = useState("monthly");
   const [activeTooltip, setActiveTooltip] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const cardsRef = useRef([]);
 
-  // Detect mobile screen for tooltip behavior
   useEffect(() => {
     const checkScreenSize = () => setIsMobile(window.innerWidth <= 1024);
     checkScreenSize();
@@ -14,7 +15,6 @@ const PricingSection = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  // Hide tooltip on outside click (mobile)
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (!e.target.closest(".tooltip-container")) {
@@ -25,7 +25,31 @@ const PricingSection = () => {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isMobile]);
 
-  // Pricing plans
+  // Intersection Observer for scroll-triggered animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-up-active");
+            observer.unobserve(entry.target); // animate only once
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    cardsRef.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      cardsRef.current.forEach((card) => {
+        if (card) observer.unobserve(card);
+      });
+    };
+  }, []);
+
   const pricingPlans = [
     {
       name: "Go Basic",
@@ -72,21 +96,27 @@ const PricingSection = () => {
   ];
 
   return (
-    <section className="text-center pt-16 pb-[100px] px-6 bg-[#fbf9f6] font-[Georgia,_serif]">
-      {/* Section Title */}
-      <h2 className="pt-[40px] sm:pt-[60px] md:pt-[100px] lg:pt-[80px] text-[2rem] sm:text-[2.2rem] font-bold text-[#a0430a] mb-3">
-        Our Pricing Plan
-      </h2>
+    <section className="text-center px-6 bg-[#fbf9f6] pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24 lg:pt-40 lg:pb-28">
+      <style>{`
+        .fade-up {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.8s ease-out;
+        }
+        .fade-up-active {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      `}</style>
+
+      <H1>Our Pricing Plan</H1>
 
       <div className="w-[60px] h-[2px] bg-[#a0430a] mx-auto mb-5 rounded"></div>
 
-      <p className="text-[#7f7060] font-['Roboto','sans-serif'] text-[0.95rem] max-w-2xl mx-auto mb-10">
-        Start saving today. If you are not happy with our services, we’ll refund your payment.
-      </p>
+      <H3> Start saving today. If you are not happy with our services, we’ll refund your payment. </H3>
 
       {/* Billing Toggle Section */}
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-3 sm:mb-12">
-        {/* Toggle */}
+      <div className="flex flex-col sm:flex-row items-center justify-center pt-8 gap-3 mb-3 sm:mb-12">
         <div className="inline-flex bg-white rounded-full p-[3px] shadow-md">
           <button
             onClick={() => setBillingCycle("monthly")}
@@ -106,7 +136,6 @@ const PricingSection = () => {
           </button>
         </div>
 
-        {/* Yearly Offer Label */}
         <span className="text-[#a0430a] text-sm font-semibold font-['Roboto','sans-serif'] mt-2 sm:mt-0 sm:ml-3">
           Save up to 15% Yearly
         </span>
@@ -117,18 +146,19 @@ const PricingSection = () => {
         {pricingPlans.map((plan, i) => (
           <div
             key={i}
-            className={`relative bg-white rounded-xl shadow-md p-8 hover:shadow-2xl transition-all duration-300 ${
+            ref={(el) => (cardsRef.current[i] = el)}
+            className={`fade-up relative bg-white rounded-xl shadow-md p-8 hover:shadow-2xl transition-all duration-300 ${
               i === 1 ? "border-2 border-[#a0430a]" : ""
             }`}
+            style={{ transitionDelay: `${i * 0.2}s` }}
           >
-            {/* Most Popular Badge */}
             {i === 1 && (
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#a0430a] text-white text-xs font-semibold uppercase tracking-wide rounded-full px-4 py-1 shadow-lg select-none z-20">
                 Most Popular
               </div>
             )}
 
-            <h3 className="text-lg font-bold text-[#a0430a] uppercase mb-2">{plan.name}</h3>
+            <H2 className="font-bold uppercase mb-2">{plan.name}</H2>
             <p className="text-[#7f7060] mb-3 text-sm">{plan.description}</p>
 
             <div className="text-4xl font-bold text-[#a0430a]">
@@ -168,15 +198,11 @@ const PricingSection = () => {
                         }}
                       />
 
-                      {/* Tooltip */}
                       <div
                         className={`absolute bottom-[125%] sm:left-1/2 sm:-translate-x-1/2 left-auto right-0 bg-[#403c3c] text-[#eee5da] text-xs rounded-md px-3 py-2 shadow-lg z-10 w-48 max-w-[85vw] text-center transition-all duration-200
-                          ${activeTooltip === tooltipId ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"}
-                        `}
+                          ${activeTooltip === tooltipId ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"}`}
                       >
                         {feature.tooltip}
-
-                        {/* Arrow */}
                         <div className="absolute w-3 h-3 bg-[#403c3c] rotate-45 bottom-[-6px] right-4 sm:left-1/2 sm:-translate-x-1/2"></div>
                       </div>
                     </div>

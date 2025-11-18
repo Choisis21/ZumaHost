@@ -1,4 +1,6 @@
 import { HandRaisedIcon, RocketLaunchIcon, BoltIcon } from "@heroicons/react/24/solid";
+import { H1, H2, H3 } from "../Components/Headings";
+import { motion } from "framer-motion";
 
 const Advantage = () => {
   const features = [
@@ -34,40 +36,69 @@ const Advantage = () => {
     },
   ];
 
+  // Animation variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: i * 0.15, // stagger effect
+      },
+    }),
+  };
+
   return (
     <section className="w-full bg-[#fff] py-20 px-6 sm:px-10 lg:px-[10%] text-center">
+      
       {/* Heading */}
-      <h2 className="text-2xl sm:text-3xl font-bold text-[#a0430a] mb-3 font-[Georgia,_serif]">
-        The Zuma Host Advantage
-      </h2>
-      <p className="text-[#7f7060] text-base sm:text-lg max-w-2xl mx-auto mb-12 font-['Roboto','sans-serif']">
-        It's not easy to find a right web hosting provider when you get overwhelmed with
-        the number of options out there.
-      </p>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeUp}
+      >
+        <H1>The Zuma Host Advantage</H1>
+      </motion.div>
 
-      {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeUp}
+      >
+        <H3>
+          It's not easy to find a right web hosting provider when you get overwhelmed with the number of options out there.
+        </H3>
+      </motion.div>
+
+      {/* Cards with stagger animation */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-12">
         {features.map((feature, index) => (
-          <div
+          <motion.div
             key={index}
-            className="flex flex-col items-start text-left p-6 sm:p-8 border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 bg-white"
+            className="flex flex-col items-start text-left p-6 sm:p-8 border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 bg-white"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={cardVariants}
+            custom={index} // provides index to variants
           >
             <div className="mb-4">{feature.icon}</div>
-            <h3 className="text-lg sm:text-xl font-semibold text-[#a0430a] mb-2 font-[Georgia,_serif]">
-              {feature.title}
-            </h3>
-            <p className="text-[#403c3c] text-sm sm:text-base leading-relaxed font-['Roboto','sans-serif']">
-              {feature.desc}
-            </p>
-          </div>
+            <H2>{feature.title}</H2>
+            <H3 className="text-[#403c3c]">{feature.desc}</H3>
+          </motion.div>
         ))}
       </div>
+
     </section>
   );
 };
 
 export default Advantage;
-
-
-
-

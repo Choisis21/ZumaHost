@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { GlobeAltIcon, ArrowPathIcon, Cog6ToothIcon, BeakerIcon, StarIcon, SparklesIcon,} from "@heroicons/react/24/outline";
+import {
+  GlobeAltIcon,
+  ArrowPathIcon,
+  Cog6ToothIcon,
+  BeakerIcon,
+  StarIcon,
+  SparklesIcon,
+} from "@heroicons/react/24/outline";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
@@ -65,8 +72,9 @@ export default function Navbar() {
     >
       {/* Navbar Container */}
       <div className="w-full flex justify-between md:px-5 items-center mt-2 p-4 rounded-lg">
+
         {/* Logo */}
-        <div className="flex items-center space-x-2 pl-4 sm:pl-6 md:pl-10">
+        <Link to="/" className="flex items-center space-x-2 pl-4 sm:pl-6 md:pl-10">
           <img
             src="/logo 4.png"
             alt="Zuma Host Logo"
@@ -75,7 +83,7 @@ export default function Navbar() {
           <div className="text-sm sm:text-base md:text-xl font-bold font-[Georgia,_serif] text-transparent bg-clip-text cursor-pointer bg-gradient-to-r from-[#403c3c] to-[#c9ad8b]">
             Zuma Host
           </div>
-        </div>
+        </Link>
 
         {/* Desktop Navbar */}
         <nav className="hidden lg:flex items-center pr-10 space-x-8">
@@ -85,41 +93,9 @@ export default function Navbar() {
           <Link to="/about" className="text-[#3b3533] hover:text-[#a0430a]">
             About
           </Link>
-
           <Link to="/hosting" className="text-[#3b3533] hover:text-[#a0430a]">
             Hosting
           </Link>
-
-          {/* Hosting Dropdown 
-          <div className="relative group">
-            <button className="text-[#3b3533] hover:text-[#a0430a] flex items-center gap-1 px-2 py-1">
-              Hosting ▾
-            </button> */}
-
-            {/* Invisible hover bridge 
-            <div className="absolute left-0 top-full w-full h-4 bg-transparent"></div>
-
-            <div
-              style={{ backgroundImage: "linear-gradient(145deg, #f7f3ee, #c9ad8b)", }}
-              className="absolute left-0 top-full mt-2 min-w-[16rem] sm:min-w-[18rem] 
-              bg-[#f8f8f8] rounded-xl shadow-lg opacity-0 scale-95 translate-y-2 
-              pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 
-              group-hover:scale-100 group-hover:pointer-events-auto border border-[#a8a29e]/60
-              transition-all duration-200 ease-out z-50"
-            >
-              {hostingPlans.map((plan, idx) => (
-                <a key={idx} href="#"
-                 className="flex items-start gap-3 px-4 py-2 text-[#3b3533] rounded-md transition-colors"
-                >
-                  <plan.icon className="w-8 h-8 text-[#a0430a] mt-1" />
-                  <div>
-                    <p className="font-medium hover:text-[#a0430a]">{plan.title}</p>
-                    <p className="text-sm font-['Roboto','sans-serif'] text-[#8a8383]">{plan.desc}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div> */}
 
           {/* Domain Dropdown */}
           <div className="relative group">
@@ -127,11 +103,12 @@ export default function Navbar() {
               Domain ▾
             </button>
 
-            {/* Invisible hover bridge */}
             <div className="absolute left-0 top-full w-full h-4 bg-transparent"></div>
 
             <div
-              style={{ backgroundImage: "linear-gradient(145deg, #f7f3ee, #c9ad8b)", }}
+              style={{
+                backgroundImage: "linear-gradient(145deg, #f7f3ee, #c9ad8b)",
+              }}
               className="absolute left-0 top-full mt-2 min-w-[16rem] sm:min-w-[18rem] 
               bg-[#f8f8f8] rounded-xl shadow-lg opacity-0 scale-95 translate-y-2 
               pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 
@@ -147,7 +124,9 @@ export default function Navbar() {
                   <service.icon className="w-5 h-5 text-[#a0430a] mt-1" />
                   <div>
                     <p className="font-medium hover:text-[#a0430a]">{service.title}</p>
-                    <p className="text-sm font-['Roboto','sans-serif'] text-[#8a8383]">{service.desc}</p>
+                    <p className="text-sm font-['Roboto','sans-serif'] text-[#8a8383]">
+                      {service.desc}
+                    </p>
                   </div>
                 </Link>
               ))}
@@ -183,63 +162,38 @@ export default function Navbar() {
             )}
           </button>
         </div>
+
       </div>
 
       {/* Mobile & Tablet Dropdown Menu */}
       {isOpen && (
         <div
-          style={{ backgroundImage: "linear-gradient(145deg, #f7f3ee, #c9ad8b)", }}
+          style={{ backgroundImage: "linear-gradient(145deg, #f7f3ee, #c9ad8b)" }}
           className="lg:hidden my-1 mx-2 space-y-2 rounded-lg border border-[#a8a29e]/60 shadow-inner shadow-[#726b6b]/50 p-2"
         >
-          <Link to="/"
+          <Link
+            to="/"
+            onClick={() => setIsOpen(false)}
             className="block text-[#3b3533] hover:bg-gray-200 px-2 py-2 rounded-md"
           >
             Home
           </Link>
-          <Link to="/about"
+
+          <Link
+            to="/about"
+            onClick={() => setIsOpen(false)}
             className="block text-[#3b3533] hover:bg-gray-200 px-2 py-2 rounded-md"
           >
             About
           </Link>
 
-          <Link to="/hosting"
+          <Link
+            to="/hosting"
+            onClick={() => setIsOpen(false)}
             className="block text-[#3b3533] hover:bg-gray-200 px-2 py-2 rounded-md"
           >
             Hosting
           </Link>
-
-
-          {/* Hosting Mobile Dropdown 
-          <div>
-            <button
-              onClick={() => setHostingOpen(!hostingOpen)}
-              className="w-full text-left flex justify-between items-center text-[#3b3533] hover:text-[#a0430a] px-2 py-2 rounded-md"
-            >
-              Hosting ▾
-            </button>
-            {hostingOpen && (
-              <div
-                style={{
-                  backgroundImage: "linear-gradient(145deg, #403c3c, #c9ad8b)",
-                }}
-                className="mt-2 space-y-2 rounded-lg shadow-inner p-2"
-              >
-                {hostingPlans.map((plan, idx) => (
-                  <a
-                    key={idx}
-                    href="#"
-                    className="flex items-start gap-3 px-2 py-2 text-[#fff] hover:opacity-90 rounded-md transition-colors"
-                  >
-                    <plan.icon className="w-5 h-5 text-[#eee5da] mt-1" />
-                    <div>
-                      <p className="font-medium">{plan.title}</p>
-                      <p className="text-sm font-['Roboto','sans-serif'] text-[#fdfcfc80]">{plan.desc}</p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>  */}
 
           {/* Domain Mobile Dropdown */}
           <div>
@@ -249,6 +203,7 @@ export default function Navbar() {
             >
               Domain ▾
             </button>
+
             {domainOpen && (
               <div
                 style={{
@@ -260,12 +215,15 @@ export default function Navbar() {
                   <Link
                     key={idx}
                     to={service.path}
+                    onClick={() => setIsOpen(false)}
                     className="flex items-start gap-3 px-2 py-2 text-[#fff] hover:opacity-90 rounded-md transition-colors"
                   >
                     <service.icon className="w-5 h-5 text-[#eee5da] mt-1" />
                     <div>
                       <p className="font-medium">{service.title}</p>
-                      <p className="text-sm font-['Roboto','sans-serif'] text-[#fdfcfc80]">{service.desc}</p>
+                      <p className="text-sm font-['Roboto','sans-serif'] text-[#fdfcfc80]">
+                        {service.desc}
+                      </p>
                     </div>
                   </Link>
                 ))}
@@ -273,13 +231,17 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link to="/contact"
+          <Link
+            to="/contact"
+            onClick={() => setIsOpen(false)}
             className="block text-[#3b3533] hover:bg-gray-200 px-2 py-2 rounded-md"
           >
             Contact
           </Link>
+
           <a
             href="#"
+            onClick={() => setIsOpen(false)}
             className="block text-[#3b3533] hover:bg-gray-200 px-2 py-2 rounded-md"
           >
             Affiliates
@@ -287,6 +249,7 @@ export default function Navbar() {
 
           <a
             href="#"
+            onClick={() => setIsOpen(false)}
             className="text-[#403c3c] my-3 border border-[#403c3c] px-3 py-2 rounded-full hover:bg-[#403c3c] hover:text-[#eee5da] transition-colors duration-200 block text-center"
           >
             Client Area

@@ -12,16 +12,18 @@ export default function Footer() {
         {/* Brand & Socials */}
         <div className="md:col-span-2 flex flex-col space-y-4">
           {/* Logo and text side by side */}
-          <div className="flex items-center space-x-3 cursor-pointer">
-            <img
-              src="/logo 4.png"
-              alt="Zuma Host Logo"
-              className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
-            />
-            <div className="text-2xl font-bold font-[Georgia,_serif] text-transparent bg-clip-text bg-gradient-to-r from-[#403c3c] to-[#c9ad8b]">
-              Zuma Host
-            </div>
-          </div>
+      <div className="flex items-center space-x-3">
+      <Link to="/" className="flex items-center space-x-3">
+         <img
+          src="/logo 4.png"
+          alt="Zuma Host Logo"
+          className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+         />
+        <span className="text-2xl font-bold font-[Georgia,_serif] text-transparent bg-clip-text bg-gradient-to-r from-[#403c3c] to-[#c9ad8b]">
+          Zuma Host
+        </span>
+      </Link>
+      </div>
 
           <p className="font-['Roboto','sans-serif'] text-[#7f7060] leading-relaxed">
             Premium web hosting services with cutting-edge technology and unparalleled support.

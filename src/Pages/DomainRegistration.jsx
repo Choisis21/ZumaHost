@@ -1,27 +1,107 @@
 import React, { useState, useEffect, useRef } from "react";
-import launch from "../assets/launch.svg"
-import Faqs from "../Components/Faqs"
+import { motion } from "framer-motion";
+import launch from "../assets/launch.svg";
+import Faqs from "../Components/Faqs";
+import Transfer from "../Components/TransferSteps";
+import { H1, H3 } from "../Components/Headings";
 
+/* ------------------------------------------------------------------------
+   DOMAIN PRICING DATA + SECTION
+------------------------------------------------------------------------ */
+const domainPricing = [
+  { tld: ".com", register: "$23.36", renew: "$24.76", transfer: "$23.36" },
+  { tld: ".info", register: "$48.62", renew: "$58.92", transfer: "$48.62" },
+  { tld: ".org", register: "$26.32", renew: "$32.40", transfer: "$26.32" },
+  { tld: ".net", register: "$26.08", renew: "$32.62", transfer: "$26.08" },
+  { tld: ".in", register: "$13.68", renew: "$14.74", transfer: "$13.68" },
+  { tld: ".host", register: "$180.78", renew: "$215.16", transfer: "$180.78" },
+  { tld: ".asia", register: "$25.70", renew: "$31.78", transfer: "$25.70" },
+];
+
+const DomainPricingSection = () => (
+  <section className="w-full bg-white py-16 px-4 md:px-8 lg:px-20">
+    {/* HEADER */}
+    <motion.div 
+      className="text-center mb-10"
+      initial={{ opacity: 0, y: -20 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      viewport={{ once: true }} 
+      transition={{ duration: 0.6 }}
+    >
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <H1>Most Popular Domains Price List</H1>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+      >
+        <H3>
+          It all starts with a perfect domain name. Choose from a wide range of 
+          domain extensions. Transfer your domain to GoSSDHosting for great offers.
+        </H3>
+      </motion.div>
+    </motion.div>
+
+    {/* TABLE */}
+    <div className="overflow-x-auto shadow-md rounded-lg border border-gray-200">
+      <motion.table
+        className="w-full text-left min-w-[600px]"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        {/* HEADER */}
+        <thead>
+          <tr className="bg-[#a0430a] text-white">
+            <th className="py-4 px-4 font-semibold border-r border-gray-300">Extensions (TLD)</th>
+            <th className="py-4 px-4 font-semibold border-r border-gray-300">Register</th>
+            <th className="py-4 px-4 font-semibold border-r border-gray-300">Renew</th>
+            <th className="py-4 px-4 font-semibold">Transfer</th>
+          </tr>
+        </thead>
+
+        {/* BODY */}
+        <tbody>
+          {domainPricing.map((row, index) => (
+            <motion.tr
+              key={index}
+              className="border-b border-gray-200 hover:bg-[#fbf9f6] transition"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <td className="py-4 px-4 font-medium text-gray-800 border-r border-gray-200">{row.tld}</td>
+              <td className="py-4 px-4 text-gray-700 border-r border-gray-200">{row.register}</td>
+              <td className="py-4 px-4 text-gray-700 border-r border-gray-200">{row.renew}</td>
+              <td className="py-4 px-4 text-gray-700">{row.transfer}</td>
+            </motion.tr>
+          ))}
+        </tbody>
+      </motion.table>
+    </div>
+  </section>
+);
+
+/* ------------------------------------------------------------------------
+   MAIN COMPONENT
+------------------------------------------------------------------------ */
 export default function DomainRegistration() {
-  /* ------------------------------------------------------------------------
-     YOUR ORIGINAL LOGIC – UNTOUCHED
-  ------------------------------------------------------------------------ */
   const [selected, setSelected] = useState(".com");
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const options = [
-    ".com",
-    ".net",
-    ".org",
-    ".info",
-    ".ai",
-    ".xyz",
-    ".shop",
-    ".blog",
-  ];
+  const options = [".com", ".net", ".org", ".info", ".ai", ".xyz", ".shop", ".blog"];
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -32,96 +112,60 @@ export default function DomainRegistration() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  /* ------------------------------------------------------------------------
-     TLD DATA FOR POPULAR TOP LEVEL DOMAINS SECTION
-  ------------------------------------------------------------------------ */
   const tldData = [
-    {
-      tld: ".com",
-      tagline: "The King of domains",
-      oldPrice: "$14.56",
-      newPrice: "$12.37",
-      color: "text-[#a0430a]",
-    },
-    {
-      tld: ".org",
-      tagline: "Connect with the .desi community",
-      oldPrice: "$25.33",
-      newPrice: "$19.54",
-      color: "text-[#a0430a]",
-    },
-    {
-      tld: ".ng",
-      tagline: "Be the answer they want",
-      oldPrice: "$27.43",
-      newPrice: "$24.74",
-      color: "text-[#a0430a]",
-    },
-    {
-      tld: ".com.ng",
-      tagline: "The King of domains",
-      oldPrice: "$14.56",
-      newPrice: "$12.37",
-      color: "text-[#a0430a]",
-    },
-    {
-      tld: ".desi",
-      tagline: "Connect with the .desi community",
-      oldPrice: "$25.33",
-      newPrice: "$19.54",
-      color: "text-[#a0430a]",
-    },
-    {
-      tld: ".info",
-      tagline: "Be the answer they want",
-      oldPrice: "$27.43",
-      newPrice: "$24.74",
-      color: "text-[#a0430a]",
-    },
+    { tld: ".com", tagline: "The King of domains", oldPrice: "$14.56", newPrice: "$12.37", color: "text-[#a0430a]" },
+    { tld: ".org", tagline: "Connect with the .desi community", oldPrice: "$25.33", newPrice: "$19.54", color: "text-[#a0430a]" },
+    { tld: ".ng", tagline: "Be the answer they want", oldPrice: "$27.43", newPrice: "$24.74", color: "text-[#a0430a]" },
+    { tld: ".com.ng", tagline: "The King of domains", oldPrice: "$14.56", newPrice: "$12.37", color: "text-[#a0430a]" },
+    { tld: ".desi", tagline: "Connect with the .desi community", oldPrice: "$25.33", newPrice: "$19.54", color: "text-[#a0430a]" },
+    { tld: ".info", tagline: "Be the answer they want", oldPrice: "$27.43", newPrice: "$24.74", color: "text-[#a0430a]" },
   ];
 
   return (
     <div className="w-full bg-white">
 
-      {/* **********************************************************************
-          1) YOUR EXISTING HEADER & DOMAIN SEARCH UI — UNTOUCHED
-      *********************************************************************** */}
+      {/* HEADER + SEARCH */}
       <section className="bg-[#eee5da] text-center px-4 sm:px-10 md:px-16 lg:px-24 py-24 sm:py-32 md:py-40">
 
-        {/* ======= HEADER TEXT ======= */}
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl text-[#a0430a] font-[Georgia,_serif] sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
-            Discover Your Ideal Domain Name
-          </h1>
-          <p className="text-sm text-[#7f7060] sm:text-base md:text-lg opacity-90 mb-10">
-            Search for new domains and register your name before someone else does
-          </p>
-        </div>
-
-        {/* ======= SEARCH BAR ======= */}
-        <div className="flex flex-row justify-center items-stretch max-w-3xl mx-auto w-full bg-white rounded-md shadow-lg relative">
-
-          {/* Search Input */}
-          <input
-            type="text"
-            placeholder="Search Now..."
-            className="flex-grow px-4 py-3 text-gray-800 outline-none text-sm sm:text-base"
-          />
-
-          {/* Domain Dropdown */}
-          <div
-            ref={dropdownRef}
-            className="relative w-[95px] sm:w-[120px] border-l border-gray-300"
+        <motion.div
+          className="max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.div
+            initial={{ scale: 0.85, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
+            <H1>Discover Your Ideal Domain Name</H1>
+          </motion.div>
+
+          <motion.p
+            className="text-sm text-[#7f7060] sm:text-base md:text-lg opacity-90 mb-10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            Search for new domains and register your name before someone else does
+          </motion.p>
+        </motion.div>
+
+        {/* SEARCH BAR – left untouched */}
+        <div className="flex flex-row justify-center items-stretch max-w-3xl mx-auto w-full bg-white rounded-md shadow-lg relative">
+          <input type="text" placeholder="Search Now..." className="flex-grow px-4 py-3 text-gray-800 outline-none text-sm sm:text-base" />
+
+          <div ref={dropdownRef} className="relative w-[95px] sm:w-[120px] border-l border-gray-300">
             <button
               onClick={() => setOpen(!open)}
               className="flex justify-between items-center w-full px-4 py-3 text-gray-700 text-sm sm:text-base"
             >
               {selected}
               <svg
-                className={`w-3 h-3 sm:w-4 sm:h-4 ml-2 transition-transform ${
-                  open ? "rotate-180" : ""
-                }`}
+                className={`w-3 h-3 sm:w-4 sm:h-4 ml-2 transition-transform ${open ? "rotate-180" : ""}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -131,7 +175,12 @@ export default function DomainRegistration() {
             </button>
 
             {open && (
-              <ul className="absolute left-0 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg z-50">
+              <motion.ul
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="absolute left-0 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg z-50"
+              >
                 {options.map((opt) => (
                   <li
                     key={opt}
@@ -146,11 +195,10 @@ export default function DomainRegistration() {
                     {opt}
                   </li>
                 ))}
-              </ul>
+              </motion.ul>
             )}
           </div>
 
-          {/* Search Button */}
           <button className="flex items-center justify-center gap-2 bg-[#403c3c] hover:bg-[#a0430a] px-3 sm:px-6 py-3 text-white text-xs sm:text-sm md:text-base transition">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
@@ -159,7 +207,7 @@ export default function DomainRegistration() {
           </button>
         </div>
 
-        {/* ======= TAG PRICES ======= */}
+        {/* PRICE TAGS – unchanged except added motion */}
         <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-10">
           {[
             { tld: ".com", price: "$4/Year" },
@@ -171,59 +219,72 @@ export default function DomainRegistration() {
             { tld: ".xyz", price: "$3/Year" },
             { tld: ".blog", price: "$5/Year" },
           ].map((item, i) => (
-            <div
+            <motion.div
               key={i}
               className="bg-[#403c3cbf] hover:bg-[#403c3c] text-white px-4 py-2 rounded-md text-sm sm:text-base transition cursor-pointer"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
             >
               <span className="font-bold mr-1">{item.tld}</span>
               {item.price}
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <p className="text-xs sm:text-sm md:text-base opacity-70 mt-8">
+        <motion.p
+          className="text-xs sm:text-sm md:text-base opacity-70 mt-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
           Free WHOIS privacy protection is included with every eligible domain registration.
-        </p>
+        </motion.p>
       </section>
 
-      {/* **********************************************************************
-          2) POPULAR TOP LEVEL DOMAINS — FIXED + ACCURATE RECREATION
-      *********************************************************************** */}
+      {/* POPULAR TLD CARDS */}
       <section className="py-20 px-6 md:px-16 bg-[#fbf9f6] text-center">
 
-        {/* Section Title */}
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#a0430a] font-[Georgia,_serif] mb-4">
-          Popular Top Level Domains
-        </h2>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <H1>Popular Top Level Domains</H1>
+        </motion.div>
 
-        <p className="max-w-2xl mx-auto text-[#7f7060] font-['Roboto','sans-serif'] text-sm sm:text-base md:text-lg mb-14">
-          Register your brand with the most popular domain extensions and grow your brand
-          presence globally. Choose from a wide range of domain extensions.
-        </p>
+        <motion.p
+          className="max-w-2xl mx-auto text-[#7f7060] text-sm sm:text-base md:text-lg mb-14"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          Register your brand with the most popular domain extensions and grow your brand presence globally.
+        </motion.p>
 
-        {/* Domain Cards */}
+        {/* Cards left intact except animation */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-
           {tldData.map((item, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-white shadow-md rounded-xl p-8 hover:shadow-lg transition text-left"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
             >
-              {/* TLD Name */}
-              <h3 className={`text-4xl font-bold mb-2 ${item.color}`}>
-                {item.tld}
-              </h3>
-
-              {/* Tagline */}
+              <h3 className={`text-4xl font-bold mb-2 ${item.color}`}>{item.tld}</h3>
               <p className="text-gray-600 mb-6">{item.tagline}</p>
 
-              {/* Prices */}
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-gray-400 line-through">{item.oldPrice}</span>
-                <span className="text-2xl font-bold  text-[#403c3c]">{item.newPrice}</span>
+                <span className="text-2xl font-bold text-[#403c3c]">{item.newPrice}</span>
               </div>
 
-              {/* Buttons */}
               <div className="flex gap-3">
                 <button className="px-5 py-2 bg-[#a0430a] text-white rounded-md hover:bg-[#a0430acc] transition">
                   Register
@@ -232,73 +293,126 @@ export default function DomainRegistration() {
                   Transfer
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
-
         </div>
       </section>
-        <div className="py-16 px-6 lg:px-20 bg-[#eee5da]">
-          <div className="flex flex-col md:flex-row items-center gap-12">
 
-            {/* Left Content */}
-        <div className="w-full lg:w-1/2">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-[#a0430a] font-[Georgia,_serif]">
-            Get Your Business Online in 3 Simple Steps
-          </h1>
+      {/* DOMAIN PRICING */}
+      <DomainPricingSection />
 
-          {/* Summary Text */}
-        <p className="mb-6 text-[#403c3c] font-['Roboto','sans-serif'] leading-relaxed">
-            Launch your business online effortlessly by picking a domain, choosing hosting, and going live in minutes!
-        </p>
+      <Transfer />
 
-          {/* Steps */}
-          <div className="space-y-4 text-[#403c3c] font-['Roboto','sans-serif']">
-        <p className="flex items-start gap-2">
+      {/* GET YOUR BUSINESS ONLINE (3 STEPS) */}
+<motion.div 
+  className="py-16 px-6 lg:px-20 bg-[#eee5da]"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+>
+  <div className="flex flex-col md:flex-row items-center gap-12">
+
+    {/* LEFT SIDE */}
+    <motion.div 
+      className="w-full lg:w-1/2"
+      initial={{ x: -40, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <H1>Get Your Business Online in 3 Simple Steps</H1>
+      </motion.div>
+
+      <motion.p
+        className="mb-6 text-[#403c3c] leading-relaxed"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+      >
+        Launch your business online effortlessly by picking a domain, choosing hosting, and going live in minutes!
+      </motion.p>
+
+      <div className="space-y-4 text-[#403c3c]">
+
+        <motion.p 
+          className="flex gap-2"
+          initial={{ x: -20, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
           <span className="text-[#a0430a] mt-1">
-            {/* Tick SVG */}
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
             </svg>
           </span>
-          <span>
-            <strong>Choose Your Domain:</strong> Pick the perfect domain name with extensions like .com, .in, .org, and more.
-          </span>
-        </p>
+          <span><strong>Choose Your Domain:</strong> Pick the perfect domain name with extensions like .com, .in, .org, and more.</span>
+        </motion.p>
 
-        <p className="flex items-start gap-2">
+        <motion.p 
+          className="flex gap-2"
+          initial={{ x: -20, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+        >
           <span className="text-[#a0430a] mt-1">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
             </svg>
           </span>
-          <span>
-            <strong>Select an Hosting Plan:</strong> Pick an hosting plan from MilesWeb at competitive, reliable pricing.
-          </span>
-        </p>
+          <span><strong>Select a Hosting Plan:</strong> Choose hosting from MilesWeb at reliable pricing.</span>
+        </motion.p>
 
-        <p className="flex items-start gap-2">
+        <motion.p 
+          className="flex gap-2"
+          initial={{ x: -20, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
           <span className="text-[#a0430a] mt-1">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"></path>
             </svg>
           </span>
-          <span>
-            <strong>Launch Your Website:</strong> Set up instantly and get your account ready to take your website live in minutes.
-          </span>
-        </p>
+          <span><strong>Launch Your Website:</strong> Set up instantly and go live in minutes.</span>
+        </motion.p>
+
       </div>
-    </div>
+    </motion.div>
 
-        {/* Right Illustration */}
-       <div className="w-full lg:w-1/2 flex justify-center">
-         <img
-          src={launch}
-          alt="Website Launch"
-          className="w-full max-w-md drop-shadow-md"/>
-        </div>
-    </div>
+    {/* RIGHT SIDE */}
+    <motion.div 
+      className="w-full lg:w-1/2 flex justify-center"
+      initial={{ x: 40, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <motion.img
+        src={launch}
+        alt="Website Launch"
+        className="w-full max-w-md drop-shadow-md"
+        initial={{ scale: 0.9, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      />
+    </motion.div>
+
   </div>
+</motion.div>
+
       <Faqs />
-</div>
+    </div>
   );
 }

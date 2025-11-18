@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import {H2, H3} from "../Components/Headings";
 
 const testimonials = [
   {
@@ -77,12 +78,12 @@ const TestimonialsSection = () => {
         <div className="lg:w-1/3 w-full flex-shrink-0 flex flex-col justify-center">
           <div className="text-center lg:text-left">
             <h2 className="text-2xl font-[Georgia,_serif] sm:text-3xl lg:text-4xl font-bold text-[#a0430a]">
-              Trusted By Leaders and Industry Experts
-            </h2>
-            <p className="text-[#7f7060] font-['Roboto','sans-serif'] mt-4 leading-relaxed">
+              Trusted By Leaders and Industry Experts </h2>
+
+            <H3 className="mt-4">
               Performance, reliability and quality service make thousands of
               businesses trust Zuma Host.
-            </p>
+            </H3>
           </div>
         </div>
 
@@ -103,10 +104,10 @@ const TestimonialsSection = () => {
                 key={index}
                 className="bg-white border border-gray-200 shadow-sm rounded-2xl p-6 flex-shrink-0 w-[85%] sm:w-[calc(50%-0.75rem)]"
               >
-                <h3 className="text-lg font-[Georgia,_serif] font-semibold text-[#a0430a] mb-3">
+                <H2 >
                   {t.title}
-                </h3>
-                <p className="text-[#403c3c] font-['Roboto','sans-serif'] mb-5">{t.text}</p>
+                </H2>
+                <H3 className="text-[#403c3c]">{t.text}</H3>
                 <div>
                   <p className="font-semibold font-[Georgia,_serif] text-[#a0430a]">{t.name}</p>
                   <p className="text-sm font-['Roboto','sans-serif'] text-[#403c3c]">{t.company}</p>

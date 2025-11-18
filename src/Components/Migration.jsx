@@ -2,14 +2,28 @@
 import React from "react";
 import migrationImg from "../assets/datatf.svg"; 
 import ssl2025 from "../assets/ssl.svg";
+import { H2 } from "../Components/Headings";
 
 const Migration = () => {
   return (
     <section className="bg-white py-16 px-6 lg:px-20">
+      <style>{`
+        @keyframes fade-slide-left {
+          0% { opacity: 0; transform: translateX(-50px); }
+          100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fade-slide-right {
+          0% { opacity: 0; transform: translateX(50px); }
+          100% { opacity: 1; transform: translateX(0); }
+        }
+        .fade-left { animation: fade-slide-left 1s ease-out forwards; }
+        .fade-right { animation: fade-slide-right 1s ease-out forwards; }
+      `}</style>
+
       {/* ========= FIRST SECTION (Image Left, Text Right) ========= */}
       <div className="flex flex-col lg:flex-row items-center gap-12 mb-20">
         {/* Image Side */}
-        <div className="w-full lg:w-1/2 flex justify-center">
+        <div className="w-full lg:w-1/2 flex justify-center fade-left">
           <img
             src={migrationImg}
             alt="Migration Illustration"
@@ -18,10 +32,10 @@ const Migration = () => {
         </div>
 
         {/* Text Side */}
-        <div className="w-full lg:w-1/2 text-center lg:text-left">
-          <h2 className="text-3xl font-[Georgia,_serif] md:text-[22px] font-bold text-[#a0430a] mb-4 leading-snug">
+        <div className="w-full lg:w-1/2 text-center lg:text-left fade-right">
+          <H2>
             Unlimited Free Migrations & Free SSL Certificates
-          </h2>
+          </H2>
           <p className="text-[#403c3c] font-['Roboto','sans-serif'] mb-4">
             Transitioning to Zuma Host from your existing service provider? Allow
             us to manage the entire migration process on your behalf.
@@ -44,7 +58,7 @@ const Migration = () => {
       {/* ========= SECOND SECTION (Image Right, Text Left) ========= */}
       <div className="flex flex-col-reverse lg:flex-row items-center gap-12">
         {/* Text Side */}
-        <div className="w-full lg:w-1/2 text-center lg:text-left">
+        <div className="w-full lg:w-1/2 text-center lg:text-left fade-left">
           <h2 className="text-3xl font-[Georgia,_serif] md:text-[22px] font-bold text-[#a0430a] mb-4 leading-snug">
             Unlimited Free Migrations & Free SSL Certificates
           </h2>
@@ -67,7 +81,7 @@ const Migration = () => {
         </div>
 
         {/* Image Side */}
-        <div className="w-full lg:w-1/2 flex justify-center">
+        <div className="w-full lg:w-1/2 flex justify-center fade-right">
           <img
             src={ssl2025}
             alt="Migration Illustration"
