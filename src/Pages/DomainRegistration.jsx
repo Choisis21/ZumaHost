@@ -5,6 +5,42 @@ import Faqs from "../Components/Faqs";
 import Transfer from "../Components/TransferSteps";
 import { H1, H3 } from "../Components/Headings";
 
+
+// ====== FAQ DATA ======
+const DomainregFAQs = [
+  {
+    question: "What is a Domain Name?",
+    answer:
+      "Think of a domain name as your website’s digital address, yourbusiness.com.ng. It’s how visitors reach your site and helps build your brand identity. Starting a business, blog, or portfolio? Secure your domain with a reliable provider in Nigeria, such as Zuma Host, to get online quickly.",
+  },
+  {
+    question:
+      "How long does a domain registration last?",
+    answer:
+      "Typically, domains are registered for 1 year, but most registrars let you renew them up to a total of 10 years.",
+  },
+  {
+    question: "Can I transfer my existing domain to your platform?",
+    answer:
+      "Absolutely. We support easy, fast domain transfers with no downtime. Our support team can guide you through unlocking your domain and providing the EPP/Auth code.",
+  },
+  {
+    question: "How long does domain registration take?",
+    answer:
+      "Domain registration is usually instant. Once you complete your order, the domain becomes active and ready to use within minutes.",
+  },
+  {
+    question: "Can I upgrade my hosting plan later?",
+    answer:
+      "Absolutely! All hosting plans support one-click upgrades without downtime. You can scale to more storage, bandwidth, or speed anytime.",
+  },
+  {
+    question: "Do you offer migration support?",
+    answer:
+      "Yes, our team offers free website migration with all plans. We'll handle everything to ensure your site transitions smoothly without downtime.",
+  },
+];
+
 /* ------------------------------------------------------------------------
    DOMAIN PRICING DATA + SECTION
 ------------------------------------------------------------------------ */
@@ -49,6 +85,10 @@ const DomainPricingSection = () => (
         </H3>
       </motion.div>
     </motion.div>
+
+    <p className="text-center text-gray-500 py-5 text-sm mt-3 block sm:hidden">
+          👉 Swipe left or right to view all prices
+        </p>
 
     {/* TABLE */}
     <div className="overflow-x-auto shadow-md rounded-lg border border-gray-200">
@@ -286,10 +326,10 @@ export default function DomainRegistration() {
               </div>
 
               <div className="flex gap-3">
-                <button className="px-5 py-2 bg-[#a0430a] text-white rounded-md hover:bg-[#a0430acc] transition">
+                <button className="px-5 py-2 bg-[#a0430a] cursor-pointer text-white rounded-md hover:bg-[#a0430acc] transition">
                   Register
                 </button>
-                <button className="px-5 py-2 border border-[#a0430acc] rounded-md hover:bg-[#a0430a0D] transition">
+                <button className="px-5 py-2 cursor-pointer border border-[#a0430acc] rounded-md hover:bg-[#a0430a0D] transition">
                   Transfer
                 </button>
               </div>
@@ -412,7 +452,10 @@ export default function DomainRegistration() {
   </div>
 </motion.div>
 
-      <Faqs />
+     <Faqs 
+      title="Frequently Asked Questions"
+      faqs={DomainregFAQs}
+      />
     </div>
   );
 }

@@ -239,22 +239,22 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="mt-4 py-3 bg-[#a0430a] hover:bg-[#8c3908] text-white font-semibold rounded-md shadow-md"
+                  className="mt-4 py-3 bg-[#a0430a] hover:bg-[#8c3908] text-white cursor-pointer font-semibold rounded-md shadow-md"
                 >
                   Send Message
                 </button>
               </form>
             ) : (
-              <motion.div
+              <motion.div 
                 className="flex flex-col items-center justify-center space-y-4 py-10 text-center text-[#403c3c]"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1, transition: { duration: 0.5 } }}
               >
                 <div className="text-6xl animate-bounce">📨</div>
-                <p className="text-lg font-medium">
+                <p className="text-lg font-[Georgia,_serif] font-medium">
                   Thanks, {formData.name || "there"}! Your message has been sent.
                 </p>
-                <p className="text-sm text-[#a0430a]">We’ll get back to you as soon as possible.</p>
+                <p className="text-sm font-['Roboto','sans-serif'] text-[#a0430a]">We’ll get back to you as soon as possible.</p>
               </motion.div>
             )}
           </motion.div>

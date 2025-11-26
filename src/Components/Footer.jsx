@@ -46,11 +46,10 @@ export default function Footer() {
         <div>
           <h3 className="text-[#a0430a] font-[Georgia,_serif] font-semibold mb-3">Product</h3>
           <ul className="space-y-2 font-['Roboto','sans-serif'] text-[#403c3c] text-sm">
-            <li><Link to="/hosting" className="hover:text-[#7f7060]">Hosting</Link></li>
-            <li><Link to="/domain-registration" className="hover:text-[#7f7060]">Domain Registration</Link></li>
-            <li><Link to="/domain" className="hover:text-[#7f7060]">Domain Transfer</Link></li>
-            <li><Link to="/dns" className="hover:text-[#7f7060]">DNS Management</Link></li>
-            <li><Link to="/web" className="hover:text-[#7f7060]">Web development</Link></li>
+            <li><Link to="/hosting" className="hover:text-[#a0430a]">Hosting</Link></li>
+            <li><Link to="/domain-registration" className="hover:text-[#a0430a]">Domain Registration</Link></li>
+            <li><Link to="/domain-registration" className="hover:text-[#a0430a]">Domain Transfer</Link></li>
+            <li><Link to="/web-design" className="hover:text-[#a0430a]">Web Design</Link></li>
           </ul>
         </div>
 
@@ -58,21 +57,21 @@ export default function Footer() {
         <div>
           <h3 className="text-[#a0430a] font-[Georgia,_serif] font-semibold mb-3">Company</h3>
           <ul className="space-y-2 font-['Roboto','sans-serif'] text-[#403c3c] text-sm">
-            <li><Link to="/about" className="hover:text-[#7f7060]">About Us</Link></li>
-            <li><Link to="/careers" className="hover:text-[#7f7060]">Careers</Link></li>
-            <li><Link to="/affiliate" className="hover:text-[#7f7060]">Affiliates</Link></li>
-            <li><Link to="/press" className="hover:text-[#7f7060]">Press</Link></li>
+            <li><Link to="/about" className="hover:text-[#a0430a]">About Us</Link></li>
+            <li><Link to="/contact" className="hover:text-[#a0430a]">Contact Us</Link></li>
+            <li><Link to="#" className="hover:text-[#a0430a]">Affiliate Program</Link></li>
+            <li><Link to="#" className="hover:text-[#a0430a]">Blog</Link></li>
           </ul>
         </div>
 
         {/* Resources Links */}
         <div>
-          <h3 className="text-[#a0430a] font-[Georgia,_serif] font-semibold mb-3">Resources</h3>
+          <h3 className="text-[#a0430a] font-[Georgia,_serif] font-semibold mb-3">Support</h3>
           <ul className="space-y-2 font-['Roboto','sans-serif'] text-[#403c3c] text-sm">
-            <li><Link to="/documentation" className="hover:text-[#7f7060]">Documentation</Link></li>
-            <li><Link to="/contact" className="hover:text-[#7f7060]">Support</Link></li>
-            <li><Link to="/about" className="hover:text-[#7f7060]">API</Link></li>
-            <li><Link to="/about" className="hover:text-[#7f7060]">Community</Link></li>
+            <li><Link to="#" className="hover:text-[#a0430a]">Knowledgebase</Link></li>
+            <li><Link to="/contact" className="hover:text-[#a0430a]">Customer Care</Link></li>
+            <li><Link to="#" className="hover:text-[#a0430a]">Client Area</Link></li>
+            <li><Link to="#" className="hover:text-[#a0430a]">Support Ticket</Link></li>
           </ul>
         </div>
       </div>

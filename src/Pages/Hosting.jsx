@@ -243,8 +243,8 @@ const HostingSection = () => {
                       <button
                         className={`py-2 px-6 w-full rounded-md font-semibold border transition 
                           ${plan.name === "LITE"
-                            ? "bg-yellow-100 border-yellow-400 text-yellow-600 hover:bg-yellow-200"
-                            : "bg-blue-100 border-blue-800 text-blue-800 hover:bg-blue-200"
+                            ? "bg-[#a0430a] text-white hover:bg-[#a0430a]/80"
+                            : "bg-white border-[#403c3c] text-[#403c3c] hover:bg-[#403c3c] hover:text-white"
                           }`}
                       >
                         Get Started

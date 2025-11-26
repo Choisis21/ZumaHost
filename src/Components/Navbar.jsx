@@ -96,8 +96,13 @@ export default function Navbar() {
           <Link to="/hosting" className="text-[#3b3533] hover:text-[#a0430a]">
             Hosting
           </Link>
-
-          {/* Domain Dropdown */}
+          <Link to="/domain-registration" className="text-[#3b3533] hover:text-[#a0430a]">
+            Domain Registration
+          </Link>
+          <Link to="/web-design" className="text-[#3b3533] hover:text-[#a0430a]">
+            Web Design
+          </Link>
+          {/* Domain Dropdown 
           <div className="relative group">
             <button className="text-[#3b3533] hover:text-[#a0430a] flex items-center gap-1 px-2 py-1">
               Domain ▾
@@ -131,7 +136,7 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-          </div>
+          </div>*/}
 
           <Link to="/contact" className="text-[#3b3533] hover:text-[#a0430a]">
             Contact
@@ -175,27 +180,33 @@ export default function Navbar() {
             to="/"
             onClick={() => setIsOpen(false)}
             className="block text-[#3b3533] hover:bg-gray-200 px-2 py-2 rounded-md"
-          >
-            Home
+          > Home
           </Link>
-
           <Link
             to="/about"
             onClick={() => setIsOpen(false)}
             className="block text-[#3b3533] hover:bg-gray-200 px-2 py-2 rounded-md"
-          >
-            About
+          > About
           </Link>
-
           <Link
             to="/hosting"
             onClick={() => setIsOpen(false)}
             className="block text-[#3b3533] hover:bg-gray-200 px-2 py-2 rounded-md"
-          >
-            Hosting
+          > Hosting
           </Link>
-
-          {/* Domain Mobile Dropdown */}
+          <Link
+            to="/domain-registration"
+            onClick={() => setIsOpen(false)}
+            className="block text-[#3b3533] hover:bg-gray-200 px-2 py-2 rounded-md"
+          > Domains
+          </Link>
+          <Link
+            to="/web-design"
+            onClick={() => setIsOpen(false)}
+            className="block text-[#3b3533] hover:bg-gray-200 px-2 py-2 rounded-md"
+          > Web Design
+          </Link>
+          {/* Domain Mobile Dropdown 
           <div>
             <button
               onClick={() => setDomainOpen(!domainOpen)}
@@ -229,7 +240,7 @@ export default function Navbar() {
                 ))}
               </div>
             )}
-          </div>
+          </div>*/}
 
           <Link
             to="/contact"

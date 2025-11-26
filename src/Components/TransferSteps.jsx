@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useInView, useAnimation } from "framer-motion";
-import stepImage from "../assets/domain1.svg";
+import { Link } from "react-router-dom";
 import { H1, H2, H3 } from "../Components/Headings"; 
+import stepImage from "../assets/domain1.svg";
 
 const steps = [
   {
@@ -69,7 +70,7 @@ const TransferSteps = () => {
   }, [isInView, controls]);
 
   return (
-    <section className="w-full bg-white py-12 md:py-20 px-4 md:px-10">
+    <section className="w-full bg-white py-12 md:py-20 px-4 md:px-10" id="transfer">
       {/* SECTION HEADER WITH SCROLL ANIMATION */}
       <motion.div
         ref={headerRef}
@@ -133,6 +134,15 @@ const TransferSteps = () => {
                   </li>
                 ))}
               </ul>
+
+            <div className="mt-8">
+              <Link
+                to="/domain-registration"
+                className="inline-block px-6 py-3 bg-[#a0430a] text-white font-semibold rounded-lg shadow hover:bg-[#883a08] transition-all duration-300 w-full sm:w-auto text-center"
+              > Start Transfer
+              </Link>
+            </div>
+
             </motion.div>
           </AnimatePresence>
         </div>
