@@ -3,17 +3,58 @@ import worldMap from "../assets/map-dark.svg";
 import { H1, H3 } from "../Components/Headings";
 import { motion } from "framer-motion";
 
-const locations = [
-  { name: "Canada", x: 15.5, y: 25 },
-  { name: "United States", x: 18, y: 35 },
-  { name: "Africa", x: 48, y: 52 },
-  { name: "Europe", x: 52, y: 30 },
+// --- 📌 Responsive Coordinates --- //
+const desktopLocations = [
+  { name: "Canada", x: 11, y: 20 },
+  { name: "United States", x: 14, y: 35 },
+  { name: "Africa", x: 46, y: 50 },
+  { name: "Europe", x: 46.5, y: 27 },
+];
+
+const tabletLocations = [
+  { name: "Canada", x: 9, y: 15 },
+  { name: "United States", x: 11, y: 30 },
+  { name: "Africa", x: 44, y: 45 },
+  { name: "Europe", x: 46, y: 22 },
+];
+
+const mobileLocations = [
+  { name: "Canada", x: 6, y: 8 },
+  { name: "United States", x: 6, y: 22 },
+  { name: "Africa", x: 42, y: 37 },
+  { name: "Europe", x: 43, y: 15.5 },
 ];
 
 export default function DataCenters() {
   const containerRef = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
+  const [device, setDevice] = useState("desktop");
+  const [activePin, setActivePin] = useState(null);
 
+  const isMobile = device === "mobile";
+
+  // Detect screen size (mobile / tablet / desktop)
+  useEffect(() => {
+    const updateDevice = () => {
+      if (window.innerWidth < 640) setDevice("mobile");
+      else if (window.innerWidth < 1024) setDevice("tablet");
+      else setDevice("desktop");
+    };
+
+    updateDevice();
+    window.addEventListener("resize", updateDevice);
+    return () => window.removeEventListener("resize", updateDevice);
+  }, []);
+
+  // Pick correct locations
+  const locations =
+    device === "mobile"
+      ? mobileLocations
+      : device === "tablet"
+        ? tabletLocations
+        : desktopLocations;
+
+  // Track map size for accurate pin placement
   useEffect(() => {
     const handleResize = () => {
       if (containerRef.current) {
@@ -22,10 +63,18 @@ export default function DataCenters() {
       }
     };
 
-    handleResize(); 
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Close tooltip when clicking outside (mobile only)
+  useEffect(() => {
+    if (!isMobile) return;
+    const close = () => setActivePin(null);
+    window.addEventListener("click", close);
+    return () => window.removeEventListener("click", close);
+  }, [isMobile]);
 
   // Animation Variants
   const fadeUp = {
@@ -35,7 +84,11 @@ export default function DataCenters() {
 
   const mapVariants = {
     hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.7, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
   };
 
   const pinVariants = {
@@ -50,7 +103,6 @@ export default function DataCenters() {
 
   return (
     <section className="w-full bg-[#fbf9f6] py-16 px-4 sm:px-8 flex flex-col items-center">
-      
       {/* Heading */}
       <motion.div
         className="text-center max-w-2xl mb-12"
@@ -61,12 +113,12 @@ export default function DataCenters() {
       >
         <H1>Our Data Centers Location</H1>
         <H3>
-          We have carefully positioned our infrastructure closer to you for fast connectivity
-          to our servers.
+          We have carefully positioned our infrastructure closer to you for fast
+          connectivity to our servers.
         </H3>
       </motion.div>
 
-      {/* Map container */}
+      {/* Map Container */}
       <motion.div
         className="relative w-full max-w-6xl flex justify-center"
         initial="hidden"
@@ -97,19 +149,67 @@ export default function DataCenters() {
               custom={idx}
               initial="hidden"
               animate="visible"
+              onClick={(e) => {
+                if (isMobile) {
+                  e.stopPropagation();
+                  setActivePin(activePin === idx ? null : idx);
+                }
+              }}
             >
               {/* Tooltip */}
-              <div className="bg-black text-white text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-md mb-1 shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <div
+                className={`bg-black text-white text-xs sm:text-sm px-2 sm:px-3 py-1 
+                  rounded-md mb-1 shadow-md whitespace-nowrap transition-opacity
+                  ${isMobile
+                    ? activePin === idx
+                      ? "opacity-100"
+                      : "opacity-0"
+                    : "opacity-0 group-hover:opacity-100"
+                  }
+                `}
+              >
                 {loc.name}
               </div>
 
-              {/* Ping marker */}
+              {/* Ping Marker */}
               <div className="relative flex items-center justify-center">
-                <div className="w-3 h-3 sm:w-4 sm:h-4 bg-[#a0430a] rounded-full shadow-md z-10"></div>
-                
-                <div className="absolute w-6 h-6 sm:w-7 sm:h-7 bg-[#a0430a] opacity-30 rounded-full animate-ping"></div>
-                <div className="absolute w-8 h-8 sm:w-9 sm:h-9 bg-[#a0430a] opacity-20 rounded-full animate-ping delay-150"></div>
-                <div className="absolute w-10 h-10 sm:w-11 sm:h-11 bg-[#a0430a] opacity-10 rounded-full animate-ping delay-300"></div>
+                {/* Inner dot */}
+                <div
+                  className="
+                    bg-[#a0430a] rounded-full shadow-md z-10
+                    w-2 h-2
+                    sm:w-3 sm:h-3
+                    md:w-4 md:h-4
+                  "
+                ></div>
+
+                {/* Ripple animations */}
+                <div
+                  className="
+                    absolute rounded-full bg-[#a0430a] opacity-30 animate-ping
+                    w-4 h-4
+                    sm:w-6 sm:h-6
+                    md:w-7 md:h-7
+                  "
+                ></div>
+
+                <div
+                  className="
+                    absolute rounded-full bg-[#a0430a] opacity-20 animate-ping delay-150
+                    w-6 h-6
+                    sm:w-8 sm:h-8
+                    md:w-9 md:h-9
+                  "
+                ></div>
+
+                <div
+                  className="
+                    absolute rounded-full bg-[#a0430a] opacity-10 animate-ping delay-300
+                    w-8 h-8
+                    sm:w-10 sm:h-10
+                    md:w-11 md:h-11
+                  "
+                ></div>
               </div>
             </motion.div>
           ))}
